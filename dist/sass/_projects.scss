@@ -1,0 +1,1062 @@
+@use 'abstracts'as *;
+@use 'base'as *;
+
+
+//* -------- Generic -------- * //
+
+
+
+.heading {
+
+    &--main {
+        text-align: center;
+        margin-bottom: 5rem;
+
+        &::after {
+            content: '';
+            display: block;
+            margin-top: 2rem;
+            width: 100%;
+            height: 1px;
+            background-color: var(--clr-grey-generic-1);
+            @include center-mar;
+        }
+    }
+}
+
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(35rem, 100%), 1fr));
+    column-gap: 6rem;
+    row-gap: 12rem;
+}
+
+
+.project {
+    padding: 2rem 2.5rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 25rem;
+
+
+    &-title {
+        text-transform: capitalize;
+        text-align: center;
+        // margin-bottom: 1rem;
+
+        &::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: hsla(44, 96%, 39%, 0.945);
+            @include center-mar;
+            margin-top: 1.5rem;
+        }
+    }
+
+
+    &-comment {
+        color: var(--clr-grey-light-2);
+        text-align: center;
+        font-style: italic;
+        font-size: 1.8rem;
+    }
+}
+
+
+
+
+$gap-column-small:2rem;
+$gap-row-small:2rem;
+
+$gap-column-big:$gap-column-small+1.3rem;
+$gap-row-big:$gap-row-small+.8rem;
+
+
+ul {
+    display: flex;
+    justify-content: center;
+    column-gap: $gap-column-small;
+    row-gap: $gap-row-small;
+    flex-wrap: wrap;
+    padding: 3rem 1rem;
+    background-color: var(--clr-grey-light-6);
+}
+
+
+li {
+    transition: $transition;
+}
+
+
+a {
+    color: var(--clr-grey-dark-1);
+    font-weight: fw(medium);
+    font-size: 2.3rem;
+    padding: .8rem 1.3rem;
+    position: relative;
+}
+
+
+*::before,
+*::after {
+    transition: $transition;
+}
+
+
+$gap-column-big:3.1rem;
+$gap-row-big:3.6rem;
+
+//* --------  -------- * //
+
+
+
+
+//* ------------------------- Menus ------------------------- *//
+
+
+//$ --------------- menu1 --------------- $//
+
+.menu1 {
+
+
+    &__link {
+        @include pseudo;
+        @include pseudo(after);
+
+
+        &::before {
+            height: 2px;
+            background-color: var(--clr-grey-dark-3);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+
+        &::after {
+            height: 2px;
+            background-color: var(--clr-grey-dark-3);
+            transform: scaleX(0);
+            transform-origin: right;
+            top: 100%;
+        }
+
+
+        &:hover::before,
+        &:hover::after {
+            transform: scaleX(1);
+        }
+    }
+}
+
+//$ --------------- End Of menu1 --------------- $//
+
+
+
+//$ --------------- menu2 --------------- $//
+
+.menu2 {
+
+    $clr-primary: #e91e63;
+
+
+    &__list {
+        background-color: var(--clr-grey-light-8);
+        column-gap: 3rem;
+    }
+
+
+    &__link {
+        padding: .4rem 1rem;
+        @include pseudo;
+        @include pseudo(after);
+
+
+        &::before {
+            bottom: 0;
+            top: unset;
+            width: 10px;
+            height: 10px;
+            transform: translate(50%, -100%);
+            border: 2px solid $clr-primary;
+            border-width: 0 0 2px 2px;
+            opacity: 0;
+        }
+
+        &::after {
+            right: 0;
+            left: unset;
+            width: 10px;
+            height: 10px;
+            transform: translate(-100%, 50%);
+            border: 2px solid $clr-primary;
+            border-width: 2px 2px 0 0;
+            opacity: 0;
+        }
+
+
+
+        &:hover::before,
+        &:hover::after {
+            opacity: 1;
+        }
+
+
+        &:hover::before {
+            transform: translate(-60%, 60%);
+        }
+
+
+        &:hover::after {
+            transform: translate(60%, -60%);
+        }
+
+
+        &:hover {
+            background-color: $clr-primary;
+            color: var(--clr-grey-light-8);
+        }
+    }
+}
+
+//$ --------------- End Of menu2 --------------- $//
+
+
+
+//$ --------------- menu3 --------------- $//
+
+.menu3 {
+
+
+    &__list {
+        background-color: var(--clr-grey-light-9);
+
+    }
+
+
+    &__link {
+        z-index: 1;
+        transition: all .4s ease-in-out;
+
+
+        span {
+            position: absolute;
+            width: 25%;
+            height: 100%;
+            background-color: #262626;
+            z-index: -1;
+            left: 0;
+            top: 0;
+            transform: scaleY(0);
+            transition: $transition;
+            transform-origin: top;
+
+
+            &:nth-child(2) {
+                left: 25%;
+                transition-delay: .15s;
+            }
+
+            &:nth-child(3) {
+                left: 50%;
+                transition-delay: .3s;
+            }
+
+            &:nth-child(4) {
+                left: 75%;
+                transition-delay: .45s;
+            }
+        }
+
+
+        &:hover span {
+            transform: scaleY(1);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+            transition-delay: .15s;
+        }
+    }
+}
+
+//$ --------------- End Of menu3 --------------- $//
+
+
+
+//$ --------------- menu4 --------------- $//
+
+.menu4 {
+
+
+    &__list {
+        background-color: #aae1c0;
+        column-gap: 4rem;
+    }
+
+
+    &__item {
+        // padding: .8rem 1.3rem;
+    }
+
+
+    &__link {
+        padding: 0 0 1rem 0;
+
+
+        &::before {
+            content: '';
+            width: 0;
+            height: 2px;
+            background-color: #cc5441;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+
+        &::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background-color: #5047cf;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transition: $transition;
+        }
+    }
+
+
+
+    &__item:hover &__link::before,
+    &__item:hover &__link::after {
+        width: 50%;
+    }
+
+    &__item:hover &__link::before {
+        transform: translateX(100%);
+    }
+
+    &__item:hover &__link::after {
+        transform: translateX(-100%);
+    }
+}
+
+//$ --------------- End Of menu4 --------------- $//
+
+
+
+//$ --------------- menu5 --------------- $//
+
+.menu5 {
+
+
+    &__list {
+        padding: 0;
+        background-color: #d5b8b8;
+
+
+        &-container {
+            background-color: #d5b8b8;
+            padding: 3rem 1rem;
+        }
+    }
+
+
+    &__link {
+        @include pseudo;
+
+
+        &::before {
+            background-color: #d13a3a;
+            transition: $transition;
+            z-index: -1;
+            transform: scale(0);
+        }
+
+
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+            transform: scale(1.1);
+        }
+
+
+        &:hover::before {
+            transform: scale(1);
+        }
+    }
+
+    &__list:hover &__link:not(:hover) {
+        opacity: .3;
+        filter: blur(1.5px);
+    }
+}
+
+//$ --------------- End Of menu5 --------------- $//
+
+
+
+//$ --------------- menu6 --------------- $//
+
+.menu6 {
+
+
+    &__list {
+        background-color: #424242;
+    }
+
+
+    &__item {
+        line-height: 1;
+    }
+
+
+    &__link {
+        color: var(--clr-grey-light-9);
+        position: relative;
+        overflow: hidden;
+        height: 4rem;
+        padding: .5rem 1rem;
+        @include pseudo;
+        z-index: 1;
+
+
+        &::before {
+            background-color: #16a085;
+            transform: scaleX(0);
+            transform-origin: right;
+            z-index: -1;
+            transition: transform .5s ease-in-out;
+        }
+
+
+        span {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            @include flex(row, center, center);
+            transition: $transition;
+            transition-delay: .2s;
+
+            &:nth-child(2) {
+                transform: translateY(110%);
+            }
+        }
+
+
+        &:hover span:nth-child(1) {
+            transform: translateY(-110%);
+            transition-delay: 0s;
+        }
+
+        &:hover span:nth-child(2) {
+            transform: translateY(-100%);
+            transition-delay: 0s;
+        }
+
+        &:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+            transition-delay: .2s;
+        }
+    }
+}
+
+//$ --------------- End Of menu6 --------------- $//
+
+
+
+//$ --------------- menu6a --------------- $//
+
+.menu6a {
+
+    overflow: visible;
+
+    &__list {
+        background-color: #baacff;
+    }
+
+
+
+
+    &__link {
+        padding: 0;
+        transform-style: preserve-3d;
+
+
+        span {
+            display: block;
+            padding: .8rem 1.3rem;
+            @include pseudo(before, attr(title));
+            @include pseudo(after, attr(title));
+            transform-style: preserve-3d;
+
+
+            &::before {
+                padding: .8rem 1.3rem;
+                color: var(--clr-grey-light-9);
+                background-color: rgb(227, 86, 35);
+                transform-style: preserve-3d;
+                transform: rotateX(90deg) translateY(100%);
+                transform-origin: bottom;
+                transition: transform .2s ease-in-out;
+            }
+
+            &::after {
+                padding: .8rem 1.3rem;
+                color: inherit;
+                background-color: var(--clr-grey-light-9);
+                transform-style: preserve-3d;
+                transform: rotateX(0) translateY(0);
+                transform-origin: top;
+                transition: transform .2s ease-in-out;
+            }
+
+
+            &:hover::before {
+                transform: rotateX(0) translateY(0);
+            }
+
+            &:hover::after {
+                transform: rotateX(90deg) translateY(-10px);
+            }
+        }
+    }
+}
+
+//$ --------------- End Of menu6a --------------- $//
+
+
+
+//$ --------------- menu7 --------------- $//
+
+.menu7 {
+
+    $clr-primary: #222;
+
+    &__list {
+        background-color: var(--clr-grey-light-8);
+    }
+
+
+    &__link {
+        color: $clr-primary;
+        font-weight: fw(bold);
+        @include pseudo;
+        @include pseudo(after);
+        z-index: 1;
+
+
+        &::before {
+            background-color: #fff;
+            opacity: 0;
+            transform: scaleY(2);
+            border-top: 2px solid #0d0d0d;
+            border-bottom: 2px solid #0d0d0d;
+            z-index: -1;
+        }
+
+
+        &::after {
+            background-color: $clr-primary;
+            z-index: -1;
+            transform: scale(0);
+        }
+
+
+        &:hover::before {
+            transform: scaleY(1.2);
+            opacity: 1;
+        }
+
+        &:hover::after {
+            transform: scale(1);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+        }
+    }
+}
+
+//$ --------------- End Of menu7 --------------- $//
+
+
+
+//$ --------------- menu8 --------------- $//
+
+.menu8 {
+
+    $clr-primary: #b3b300;
+
+
+    &__list {
+        background-color: #242133;
+        column-gap: 3.5rem;
+    }
+
+
+    &__link {
+        color: var(--clr-grey-light-8);
+        padding: .7rem 1.2rem;
+
+
+        span {
+
+            &::before,
+            &::after {
+                opacity: 0;
+            }
+
+            &:first-child::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-top: 2px solid $clr-primary;
+                border-left: 2px solid $clr-primary;
+                transform: translate(10px, 10px);
+            }
+
+            &:first-child::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-top: 2px solid $clr-primary;
+                border-right: 2px solid $clr-primary;
+                transform: translate(-10px, 10px);
+            }
+
+
+
+            &:last-child::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-bottom: 2px solid $clr-primary;
+                border-left: 2px solid $clr-primary;
+                transform: translate(10px, -10px);
+            }
+
+
+            &:last-child::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-bottom: 2px solid $clr-primary;
+                border-right: 2px solid $clr-primary;
+                transform: translate(-10px, -10px);
+            }
+        }
+
+
+        &:hover {
+            color: $clr-primary;
+        }
+
+
+        &:hover span::before,
+        &:hover span::after {
+            transform: translate(0);
+            opacity: 1;
+        }
+    }
+}
+
+//$ --------------- End Of menu8 --------------- $//
+
+
+
+
+//$ --------------- menu9 --------------- $//
+
+.menu9 {
+
+    $clr-primary: #72df18;
+
+    &__list {
+        background-color: #424242;
+        column-gap: 3rem;
+    }
+
+
+    &__link {
+        color: $clr-primary;
+        @include pseudo;
+        @include pseudo(after);
+
+        &::before {
+            border-top: 2px solid $clr-primary;
+            border-left: 2px solid $clr-primary;
+            transform-origin: left;
+        }
+
+        &::after {
+            left: revert;
+            top: revert;
+            bottom: 0;
+            right: 0;
+            border-bottom: 2px solid $clr-primary;
+            border-right: 2px solid $clr-primary;
+            transform-origin: right;
+        }
+
+
+        &:hover::before {
+            width: 15px;
+            height: 15px;
+            transform: rotate(360deg);
+        }
+
+        &:hover::after {
+            width: 15px;
+            height: 15px;
+            transform: rotate(-360deg);
+        }
+    }
+}
+
+//$ --------------- End Of menu9 --------------- $//
+
+
+
+//$ --------------- menu10 --------------- $//
+
+.menu10 {
+
+
+    &__list {
+        background-color: #ffd9d9;
+    }
+
+
+    &__link {
+        color: #222;
+        @include pseudo;
+        z-index: 1;
+        @include center-flex;
+
+
+        &::before {
+            height: 4rem;
+            top: revert;
+            left: revert;
+            background-color: rgb(163, 71, 66);
+            transform-style: preserve-3d;
+            transform: scale(0) rotateY(0deg) skew(10deg);
+            transition: all .5s cubic-bezier(.43, 1.91, .35, .74);
+            z-index: -1;
+        }
+
+
+        &:hover::before {
+            transform: scale(1) skew(10deg) rotate(360deg);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+        }
+    }
+
+}
+
+//$ --------------- End Of menu11 --------------- $//
+
+.menu11 {
+
+
+
+    &__list {
+        background-color: #6f6f6f;
+    }
+
+
+    &__link {
+        color: #c0e7e2;
+        @include pseudo;
+        z-index: 1;
+        overflow: hidden;
+
+
+        &::before {
+            height: 3px;
+            top: calc(50% - 1.5px);
+            left: -100%;
+            width: 100%;
+            background-color: #2195f3f2;
+        }
+
+
+
+        &:hover::before {
+            animation: animate .5s linear forwards;
+        }
+
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+        }
+
+
+
+        @keyframes animate {
+
+            0% {
+                height: 3px;
+                top: calc(50% - 1.5px);
+                left: -100%;
+            }
+
+
+            50% {
+                height: 3px;
+                top: calc(50% - 1.5px);
+                left: 0;
+            }
+
+
+            100% {
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }
+    }
+
+}
+
+//$ --------------- End Of menu11 --------------- $//
+
+
+
+//$ --------------- End Of menu12 --------------- $//
+
+.menu12 {
+
+
+
+    &__list {
+        background-color: #8cffe0ca;
+        column-gap: 0;
+    }
+
+
+    &__link {
+        color: var(--clr-grey-dark-2);
+        @include pseudo;
+        padding-inline: 2.2rem;
+        z-index: 1;
+
+
+        &::before {
+            background-color: #efefefb6;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s ease-in-out;
+            z-index: -1;
+        }
+
+
+        &:hover::before {
+            transform: scale(1);
+            transform-origin: left;
+        }
+    }
+
+}
+
+//$ --------------- End Of menu12 --------------- $//
+
+
+
+//$ --------------- End Of menu13 --------------- $//
+
+.menu13 {
+
+
+
+    &__list {
+        background-color: #e9e9e9;
+    }
+
+
+    &__link {
+        color: #00100e;
+
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: #262626;
+            opacity: 0;
+            border-radius: 50%;
+        }
+
+
+        &:hover::before {
+            opacity: 1;
+            box-shadow: 10px 0 0 #ff0052, -10px 0 0 #ff0052, 20px 0 0 #119600, -20px 0 0 #119600;
+        }
+    }
+
+}
+
+//$ --------------- End Of menu13 --------------- $//
+
+
+
+//$ --------------- End Of menu14 --------------- $//
+
+.menu14 {
+
+
+
+    &__list {
+        background-color: #17141fe9;
+    }
+
+
+    &__link {
+        color: #d1d8d7;
+        text-transform: uppercase;
+        transition: all .35s ease-out;
+        overflow: hidden;
+        border-radius: 12px;
+        transition-delay: .3s;
+        letter-spacing: 2px;
+
+
+        &::before {
+            content: attr(data-text);
+            @include center-pos;
+            color: #34d0cb;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px #34d0cb, 0 0 30px #34d0cb, 0 0 70px #34d0cb;
+            letter-spacing: 4rem;
+            opacity: 0;
+            text-align: center;
+            transition: all .35s ease-out;
+        }
+
+
+        &:hover {
+            color: #ffffff33;
+            transition-delay: 0;
+        }
+
+        &:hover::before {
+            letter-spacing: 2px;
+            opacity: 1;
+        }
+    }
+}
+
+//$ --------------- End Of menu14 --------------- $//
+
+
+
+//$ --------------- End Of menu15 --------------- $//
+
+.menu15 {
+
+
+
+    &__list {
+        background-color: #181818;
+        column-gap: $gap-column-big + 2rem;
+        row-gap: $gap-row-big;
+        padding: 6rem 3rem;
+    }
+
+
+    &__link {
+        color: transparent;
+        text-transform: uppercase;
+        -webkit-text-stroke: .5px var(--clr-grey-light-8);
+        padding: 0;
+
+
+        &::before,
+        &::after {
+            content: attr(data-text);
+            position: absolute;
+            opacity: 0;
+            font-size: 2.3rem;
+            top: 0;
+            left: 0;
+        }
+
+
+        &:hover::before {
+            color: #f82626;
+            z-index: 1;
+            -webkit-text-stroke: 1px #191919;
+            opacity: 1;
+            transform: translate(15%, -15%);
+        }
+
+        &:hover::after {
+            color: #26eaf8;
+            z-index: 2;
+            -webkit-text-stroke: 1px #191919;
+            opacity: 1;
+            transform: translate(23%, -23%);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-8);
+            -webkit-text-stroke: 1px #191919;
+        }
+    }
+}
+
+//$ --------------- End Of menu15 --------------- $//
+
+
+
+//$ --------------- Project 1 --------------- $//
+//$ --------------- End Of Project 1 --------------- $//
+
+
+//* ------------------------- End Of Flipping Cards ------------------------- *//
+
+
+
+//* ------------------------- Flipping Cards ------------------------- *//
+
+//$ --------------- Project 1 --------------- $//
+//$ --------------- End Of Project 1 --------------- $//
+
+
+
+//$ --------------- Project 1 --------------- $//
+//$ --------------- End Of Project 1 --------------- $//
+
+//* ------------------------- End Of Flipping Cards ------------------------- *//
