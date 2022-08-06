@@ -1,0 +1,258 @@
+@use '../Abstracts'as*;
+
+
+.menu11 {
+
+
+
+    &__list {
+        background-color: #6f6f6f;
+    }
+
+
+    &__link {
+        color: #c0e7e2;
+        @include pseudo;
+        z-index: 1;
+        overflow: hidden;
+
+
+        &::before {
+            height: 3px;
+            top: calc(50% - 1.5px);
+            left: -100%;
+            width: 100%;
+            background-color: #2195f3f2;
+        }
+
+
+
+        &:hover::before {
+            animation: animate .5s linear forwards;
+        }
+
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+        }
+
+
+
+        @keyframes animate {
+
+            0% {
+                height: 3px;
+                top: calc(50% - 1.5px);
+                left: -100%;
+            }
+
+
+            50% {
+                height: 3px;
+                top: calc(50% - 1.5px);
+                left: 0;
+            }
+
+
+            100% {
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }
+    }
+
+}
+
+//$ --------------- End Of menu11 --------------- $//
+
+
+
+//$ --------------- End Of menu12 --------------- $//
+
+.menu12 {
+
+
+
+    &__list {
+        background-color: #8cffe0ca;
+        column-gap: 0;
+    }
+
+
+    &__link {
+        color: var(--clr-grey-dark-2);
+        @include pseudo;
+        padding-inline: 2.2rem;
+        z-index: 1;
+
+
+        &::before {
+            background-color: #efefefb6;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s ease-in-out;
+            z-index: -1;
+        }
+
+
+        &:hover::before {
+            transform: scale(1);
+            transform-origin: left;
+        }
+    }
+
+}
+
+//$ --------------- End Of menu12 --------------- $//
+
+
+
+//$ --------------- End Of menu13 --------------- $//
+
+.menu13 {
+
+
+
+    &__list {
+        background-color: #e9e9e9;
+    }
+
+
+    &__link {
+        color: #00100e;
+
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: #262626;
+            opacity: 0;
+            border-radius: 50%;
+        }
+
+
+        &:hover::before {
+            opacity: 1;
+            box-shadow: 10px 0 0 #ff0052, -10px 0 0 #ff0052, 20px 0 0 #119600, -20px 0 0 #119600;
+        }
+    }
+
+}
+
+//$ --------------- End Of menu13 --------------- $//
+
+
+
+//$ --------------- End Of menu14 --------------- $//
+
+.menu14 {
+
+
+
+    &__list {
+        background-color: #17141fe9;
+    }
+
+
+    &__link {
+        color: #d1d8d7;
+        text-transform: uppercase;
+        transition: all .35s ease-out;
+        overflow: hidden;
+        border-radius: 12px;
+        transition-delay: .3s;
+        letter-spacing: 2px;
+
+
+        &::before {
+            content: attr(data-text);
+            @include center-pos;
+            color: #34d0cb;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px #34d0cb, 0 0 30px #34d0cb, 0 0 70px #34d0cb;
+            letter-spacing: 4rem;
+            opacity: 0;
+            text-align: center;
+            transition: all .35s ease-out;
+        }
+
+
+        &:hover {
+            color: #ffffff33;
+            transition-delay: 0;
+        }
+
+        &:hover::before {
+            letter-spacing: 2px;
+            opacity: 1;
+        }
+    }
+}
+
+//$ --------------- End Of menu14 --------------- $//
+
+
+
+//$ --------------- End Of menu15 --------------- $//
+
+.menu15 {
+
+
+
+    &__list {
+        background-color: #181818;
+        column-gap: $gap-column-big + 2rem;
+        row-gap: $gap-row-big;
+        padding: 6rem 3rem;
+    }
+
+
+    &__link {
+        color: transparent;
+        text-transform: uppercase;
+        -webkit-text-stroke: .5px var(--clr-grey-light-8);
+        padding: 0;
+
+
+        &::before,
+        &::after {
+            content: attr(data-text);
+            position: absolute;
+            opacity: 0;
+            font-size: 2.3rem;
+            top: 0;
+            left: 0;
+        }
+
+
+        &:hover::before {
+            color: #f82626;
+            z-index: 1;
+            -webkit-text-stroke: 1px #191919;
+            opacity: 1;
+            transform: translate(15%, -15%);
+        }
+
+        &:hover::after {
+            color: #26eaf8;
+            z-index: 2;
+            -webkit-text-stroke: 1px #191919;
+            opacity: 1;
+            transform: translate(23%, -23%);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-8);
+            -webkit-text-stroke: 1px #191919;
+        }
+    }
+}
+
+//$ --------------- End Of menu15 --------------- $//

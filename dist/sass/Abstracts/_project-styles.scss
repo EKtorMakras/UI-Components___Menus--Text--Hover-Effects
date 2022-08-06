@@ -1,0 +1,106 @@
+@use 'abstracts'as *;
+
+.heading {
+
+    &--main {
+        text-align: center;
+        margin-bottom: 5rem;
+
+        &::after {
+            content: '';
+            display: block;
+            margin-top: 2rem;
+            width: 100%;
+            height: 1px;
+            background-color: var(--clr-grey-generic-1);
+            @include center-mar;
+        }
+    }
+}
+
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(35rem, 100%), 1fr));
+    column-gap: 6rem;
+    row-gap: 12rem;
+}
+
+
+.project {
+    padding: 2rem 2.5rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 25rem;
+
+
+    &-title {
+        text-transform: capitalize;
+        text-align: center;
+        // margin-bottom: 1rem;
+
+        &::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: hsla(44, 96%, 39%, 0.945);
+            @include center-mar;
+            margin-top: 1.5rem;
+        }
+    }
+
+
+    &-comment {
+        color: var(--clr-grey-light-2);
+        text-align: center;
+        font-style: italic;
+        font-size: 1.8rem;
+    }
+}
+
+
+
+
+$gap-column-small:2rem;
+$gap-row-small:2rem;
+
+$gap-column-big:$gap-column-small+1.3rem;
+$gap-row-big:$gap-row-small+.8rem;
+
+
+ul {
+    display: flex;
+    justify-content: center;
+    column-gap: $gap-column-small;
+    row-gap: $gap-row-small;
+    flex-wrap: wrap;
+    padding: 3rem 1rem;
+    background-color: var(--clr-grey-light-6);
+}
+
+
+li {
+    transition: $transition;
+}
+
+
+a {
+    color: var(--clr-grey-dark-1);
+    font-weight: fw(medium);
+    font-size: 2.3rem;
+    padding: .8rem 1.3rem;
+    position: relative;
+}
+
+
+*::before,
+*::after {
+    transition: $transition;
+}
+
+
+$gap-column-big:3.1rem;
+$gap-row-big:3.6rem;

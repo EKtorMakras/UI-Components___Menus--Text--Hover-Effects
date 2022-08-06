@@ -1,0 +1,282 @@
+@use '../Abstracts'as *;
+
+//$ --------------- menu1 --------------- $//
+
+.menu1 {
+
+
+    &__link {
+        @include pseudo;
+        @include pseudo(after);
+
+
+        &::before {
+            height: 2px;
+            background-color: var(--clr-grey-dark-3);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+
+        &::after {
+            height: 2px;
+            background-color: var(--clr-grey-dark-3);
+            transform: scaleX(0);
+            transform-origin: right;
+            top: 100%;
+        }
+
+
+        &:hover::before,
+        &:hover::after {
+            transform: scaleX(1);
+        }
+    }
+}
+
+//$ --------------- End Of menu1 --------------- $//
+
+
+
+//$ --------------- menu2 --------------- $//
+
+.menu2 {
+
+    $clr-primary: #e91e63;
+
+
+    &__list {
+        background-color: var(--clr-grey-light-8);
+        column-gap: 3rem;
+    }
+
+
+    &__link {
+        padding: .4rem 1rem;
+        @include pseudo;
+        @include pseudo(after);
+
+
+        &::before {
+            bottom: 0;
+            top: unset;
+            width: 10px;
+            height: 10px;
+            transform: translate(50%, -100%);
+            border: 2px solid $clr-primary;
+            border-width: 0 0 2px 2px;
+            opacity: 0;
+        }
+
+        &::after {
+            right: 0;
+            left: unset;
+            width: 10px;
+            height: 10px;
+            transform: translate(-100%, 50%);
+            border: 2px solid $clr-primary;
+            border-width: 2px 2px 0 0;
+            opacity: 0;
+        }
+
+
+
+        &:hover::before,
+        &:hover::after {
+            opacity: 1;
+        }
+
+
+        &:hover::before {
+            transform: translate(-60%, 60%);
+        }
+
+
+        &:hover::after {
+            transform: translate(60%, -60%);
+        }
+
+
+        &:hover {
+            background-color: $clr-primary;
+            color: var(--clr-grey-light-8);
+        }
+    }
+}
+
+//$ --------------- End Of menu2 --------------- $//
+
+
+
+//$ --------------- menu3 --------------- $//
+
+.menu3 {
+
+
+    &__list {
+        background-color: var(--clr-grey-light-9);
+
+    }
+
+
+    &__link {
+        z-index: 1;
+        transition: all .4s ease-in-out;
+
+
+        span {
+            position: absolute;
+            width: 25%;
+            height: 100%;
+            background-color: #262626;
+            z-index: -1;
+            left: 0;
+            top: 0;
+            transform: scaleY(0);
+            transition: $transition;
+            transform-origin: top;
+
+
+            &:nth-child(2) {
+                left: 25%;
+                transition-delay: .15s;
+            }
+
+            &:nth-child(3) {
+                left: 50%;
+                transition-delay: .3s;
+            }
+
+            &:nth-child(4) {
+                left: 75%;
+                transition-delay: .45s;
+            }
+        }
+
+
+        &:hover span {
+            transform: scaleY(1);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+            transition-delay: .15s;
+        }
+    }
+}
+
+//$ --------------- End Of menu3 --------------- $//
+
+
+
+//$ --------------- menu4 --------------- $//
+
+.menu4 {
+
+
+    &__list {
+        background-color: #aae1c0;
+        column-gap: 4rem;
+    }
+
+
+    &__item {
+        // padding: .8rem 1.3rem;
+    }
+
+
+    &__link {
+        padding: 0 0 1rem 0;
+
+
+        &::before {
+            content: '';
+            width: 0;
+            height: 2px;
+            background-color: #cc5441;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+
+        &::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background-color: #5047cf;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transition: $transition;
+        }
+    }
+
+
+
+    &__item:hover &__link::before,
+    &__item:hover &__link::after {
+        width: 50%;
+    }
+
+    &__item:hover &__link::before {
+        transform: translateX(100%);
+    }
+
+    &__item:hover &__link::after {
+        transform: translateX(-100%);
+    }
+}
+
+//$ --------------- End Of menu4 --------------- $//
+
+
+
+//$ --------------- menu5 --------------- $//
+
+.menu5 {
+
+
+    &__list {
+        padding: 0;
+        background-color: #d5b8b8;
+
+
+        &-container {
+            background-color: #d5b8b8;
+            padding: 3rem 1rem;
+        }
+    }
+
+
+    &__link {
+        @include pseudo;
+
+
+        &::before {
+            background-color: #d13a3a;
+            transition: $transition;
+            z-index: -1;
+            transform: scale(0);
+        }
+
+
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+            transform: scale(1.1);
+        }
+
+
+        &:hover::before {
+            transform: scale(1);
+        }
+    }
+
+    &__list:hover &__link:not(:hover) {
+        opacity: .3;
+        filter: blur(1.5px);
+    }
+}
+
+//$ --------------- End Of menu5 --------------- $//

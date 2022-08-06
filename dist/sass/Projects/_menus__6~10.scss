@@ -1,0 +1,383 @@
+@use '../Abstracts'as *;
+
+
+//$ --------------- menu6 --------------- $//
+
+.menu6 {
+
+
+    &__list {
+        background-color: #424242;
+    }
+
+
+    &__item {
+        line-height: 1;
+    }
+
+
+    &__link {
+        color: var(--clr-grey-light-9);
+        position: relative;
+        overflow: hidden;
+        height: 4rem;
+        padding: .5rem 1rem;
+        @include pseudo;
+        z-index: 1;
+
+
+        &::before {
+            background-color: #16a085;
+            transform: scaleX(0);
+            transform-origin: right;
+            z-index: -1;
+            transition: transform .5s ease-in-out;
+        }
+
+
+        span {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            @include flex(row, center, center);
+            transition: $transition;
+            transition-delay: .2s;
+
+            &:nth-child(2) {
+                transform: translateY(110%);
+            }
+        }
+
+
+        &:hover span:nth-child(1) {
+            transform: translateY(-110%);
+            transition-delay: 0s;
+        }
+
+        &:hover span:nth-child(2) {
+            transform: translateY(-100%);
+            transition-delay: 0s;
+        }
+
+        &:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+            transition-delay: .2s;
+        }
+    }
+}
+
+//$ --------------- End Of menu6 --------------- $//
+
+
+
+//$ --------------- menu6a --------------- $//
+
+.menu6a {
+
+    overflow: visible;
+
+    &__list {
+        background-color: #baacff;
+    }
+
+
+
+
+    &__link {
+        padding: 0;
+        transform-style: preserve-3d;
+
+
+        span {
+            display: block;
+            padding: .8rem 1.3rem;
+            @include pseudo(before, attr(title));
+            @include pseudo(after, attr(title));
+            transform-style: preserve-3d;
+
+
+            &::before {
+                padding: .8rem 1.3rem;
+                color: var(--clr-grey-light-9);
+                background-color: rgb(227, 86, 35);
+                transform-style: preserve-3d;
+                transform: rotateX(90deg) translateY(100%);
+                transform-origin: bottom;
+                transition: transform .2s ease-in-out;
+            }
+
+            &::after {
+                padding: .8rem 1.3rem;
+                color: inherit;
+                background-color: var(--clr-grey-light-9);
+                transform-style: preserve-3d;
+                transform: rotateX(0) translateY(0);
+                transform-origin: top;
+                transition: transform .2s ease-in-out;
+            }
+
+
+            &:hover::before {
+                transform: rotateX(0) translateY(0);
+            }
+
+            &:hover::after {
+                transform: rotateX(90deg) translateY(-10px);
+            }
+        }
+    }
+}
+
+//$ --------------- End Of menu6a --------------- $//
+
+
+
+//$ --------------- menu7 --------------- $//
+
+.menu7 {
+
+    $clr-primary: #222;
+
+    &__list {
+        background-color: var(--clr-grey-light-8);
+    }
+
+
+    &__link {
+        color: $clr-primary;
+        font-weight: fw(bold);
+        @include pseudo;
+        @include pseudo(after);
+        z-index: 1;
+
+
+        &::before {
+            background-color: #fff;
+            opacity: 0;
+            transform: scaleY(2);
+            border-top: 2px solid #0d0d0d;
+            border-bottom: 2px solid #0d0d0d;
+            z-index: -1;
+        }
+
+
+        &::after {
+            background-color: $clr-primary;
+            z-index: -1;
+            transform: scale(0);
+        }
+
+
+        &:hover::before {
+            transform: scaleY(1.2);
+            opacity: 1;
+        }
+
+        &:hover::after {
+            transform: scale(1);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+        }
+    }
+}
+
+//$ --------------- End Of menu7 --------------- $//
+
+
+
+//$ --------------- menu8 --------------- $//
+
+.menu8 {
+
+    $clr-primary: #b3b300;
+
+
+    &__list {
+        background-color: #242133;
+        column-gap: 3.5rem;
+    }
+
+
+    &__link {
+        color: var(--clr-grey-light-8);
+        padding: .7rem 1.2rem;
+
+
+        span {
+
+            &::before,
+            &::after {
+                opacity: 0;
+            }
+
+            &:first-child::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-top: 2px solid $clr-primary;
+                border-left: 2px solid $clr-primary;
+                transform: translate(10px, 10px);
+            }
+
+            &:first-child::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-top: 2px solid $clr-primary;
+                border-right: 2px solid $clr-primary;
+                transform: translate(-10px, 10px);
+            }
+
+
+
+            &:last-child::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-bottom: 2px solid $clr-primary;
+                border-left: 2px solid $clr-primary;
+                transform: translate(10px, -10px);
+            }
+
+
+            &:last-child::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 9px;
+                height: 9px;
+                background-color: transparent;
+                border-bottom: 2px solid $clr-primary;
+                border-right: 2px solid $clr-primary;
+                transform: translate(-10px, -10px);
+            }
+        }
+
+
+        &:hover {
+            color: $clr-primary;
+        }
+
+
+        &:hover span::before,
+        &:hover span::after {
+            transform: translate(0);
+            opacity: 1;
+        }
+    }
+}
+
+//$ --------------- End Of menu8 --------------- $//
+
+
+
+
+//$ --------------- menu9 --------------- $//
+
+.menu9 {
+
+    $clr-primary: #72df18;
+
+    &__list {
+        background-color: #424242;
+        column-gap: 3rem;
+    }
+
+
+    &__link {
+        color: $clr-primary;
+        @include pseudo;
+        @include pseudo(after);
+
+        &::before {
+            border-top: 2px solid $clr-primary;
+            border-left: 2px solid $clr-primary;
+            transform-origin: left;
+        }
+
+        &::after {
+            left: revert;
+            top: revert;
+            bottom: 0;
+            right: 0;
+            border-bottom: 2px solid $clr-primary;
+            border-right: 2px solid $clr-primary;
+            transform-origin: right;
+        }
+
+
+        &:hover::before {
+            width: 15px;
+            height: 15px;
+            transform: rotate(360deg);
+        }
+
+        &:hover::after {
+            width: 15px;
+            height: 15px;
+            transform: rotate(-360deg);
+        }
+    }
+}
+
+//$ --------------- End Of menu9 --------------- $//
+
+
+
+//$ --------------- menu10 --------------- $//
+
+.menu10 {
+
+
+    &__list {
+        background-color: #ffd9d9;
+    }
+
+
+    &__link {
+        color: #222;
+        @include pseudo;
+        z-index: 1;
+        @include center-flex;
+
+
+        &::before {
+            height: 4rem;
+            top: revert;
+            left: revert;
+            background-color: rgb(163, 71, 66);
+            transform-style: preserve-3d;
+            transform: scale(0) rotateY(0deg) skew(10deg);
+            transition: all .5s cubic-bezier(.43, 1.91, .35, .74);
+            z-index: -1;
+        }
+
+
+        &:hover::before {
+            transform: scale(1) skew(10deg) rotate(360deg);
+        }
+
+        &:hover {
+            color: var(--clr-grey-light-9);
+        }
+    }
+
+}
+
+//$ --------------- End Of menu10 --------------- $//
